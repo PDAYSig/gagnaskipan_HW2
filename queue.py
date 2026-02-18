@@ -8,11 +8,11 @@ import sll
 import dll
 
 class Queue:
-
-    def __init__(self, lst):
+    def __init__(self, lst : sll.SLList | dll.DLList):
         """"
         Constructor.
         """
+        self._lst = lst
 
 
     def __len__(self):
@@ -25,33 +25,31 @@ class Queue:
         """
         Returns the string representation of the queue.
         """
-        ...
-        return ""
+        return str(self._lst)
 
     def is_empty(self):
         """
         Returns True if queue is empty, otherwise False.
         """
-        ...
-        return True
+        return len(self) == 0
 
     def front(self):
         """
         Returns the front element of the queue (without removing it).
         :return: If non-empty, the front element of the queue, otherwise throws exception.
         """
-        ...
-        return None
+
+        return self._lst.front()
 
     def enqueue(self, item):
         """
         Inserts the element to the back of the queue.
         """
-        ...
+        self._lst.push_back(item)
 
     def dequeue(self):
         """
         Removes the element at the front of the queue (without returning)..
         """
-        ...
+        self._lst.pop_front()
 

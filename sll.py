@@ -91,7 +91,7 @@ class SLList:
             new_node.next = self._head
             self._head = new_node
         self._len += 1
-    
+
     def pop_front(self):
         """
         Remove an element from the front of the list.
@@ -137,7 +137,7 @@ class SLList:
 
         if self.is_empty():
             raise IndexError("List is empty")
-        
+
         current_node : Node = self._head
         while current_node.next != self._tail:
             current_node = current_node.next
