@@ -8,10 +8,12 @@ import sll
 import dll
 
 class Deque:
-    def __init__(self, lst : sll.SLList | dll.DLList):
+    def __init__(self, lst : sll.SLList | dll.DLList | None = None):
         """
         Constructor.
         """
+        if lst is None:
+            lst = sll.SLList()
         self._lst = lst
 
     def __len__(self) -> int:

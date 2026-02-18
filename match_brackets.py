@@ -2,6 +2,7 @@
 import stack
 import queue
 import deque
+from sll import SLList
 
 def match_brackets(s: str) -> bool:
     """
@@ -17,8 +18,34 @@ def match_brackets(s: str) -> bool:
         "]b ["   <--- close with ] before opening
         "{{ a }"   <-- missing }
     """
-    ...
-    return False
+    open_brackets = ("(", "[", "{")
+    closed_brackets =(")", "]", "}")
+    bracket_stack = stack.Stack(SLList())
+    brackets_match = False
+    for ch in s:
+        if ch in open_brackets:
+            bracket_stack.push(ch)
+            brackets_match = False
+            continue
+        if bracket_stack.is_empty() and ch in closed_brackets:
+            return False
+
+        if ch == ")" and bracket_stack.top() == "(":
+            bracket_stack.pop()
+            if bracket_stack.is_empty():
+                brackets_match = True
+            continue
+        elif ch == "]" and bracket_stack.top() == "[":
+            bracket_stack.pop()
+            if bracket_stack.is_empty():
+                brackets_match = True
+            continue
+        elif ch == "}" and bracket_stack.top() == "{":
+            bracket_stack.pop()
+            if bracket_stack.is_empty():
+                brackets_match = True
+
+    return brackets_match
 
 def main():
     name = 'brackets.txt'
